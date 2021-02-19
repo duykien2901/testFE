@@ -1,0 +1,74 @@
+.addTask {
+    margin-top: 50px;
+    height: 400px;
+    box-shadow: 0 4px 10px 0 hsla(0, 0%, 39.2%, 0.4);
+    
+}
+
+.title{
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px 0px;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: bisque;
+    /* margin: 0 5px 5px 5px; */
+    margin: 10px 0 5px 0;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.lab {
+    display: block;
+}
+
+.textArea {
+    display: block;
+    width: 100%;
+}
+
+.date-piority {
+    display: flex;
+    justify-content: space-between;
+  
+}
+
+.date-piority .date {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.dueDate {
+    margin: 5px 0;
+}
+
+.date-piority .piority {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.alert {
+    position: absolute;
+    width: 200px;
+    height: 40px;
+    background-color: #eda1af;
+    top: -10%;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: kien .3s;
+}
+
+@keyframes kien {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
