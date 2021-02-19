@@ -28,15 +28,6 @@ class App extends Component {
 		});
 	}
 
-	// componentDidMount() {
-	// 	this.setState({
-	// 		...this.state,
-			
-	// 		resetCheck: false,
-			
-	// 	})
-	// }
-
 	s4() {
 		return Math.floor((1 + Math.random()) * 0x1000).toString(16).substring(1);
 	}
@@ -69,7 +60,7 @@ class App extends Component {
 	}
 
 	update = (data) => {
-		var date = `${new Date().getFullYear()}` + "-" + "0" + `${new Date().getMonth() + 1}` + "-" + `${new Date().getDate()}`;
+	
 		let {tasks} = this.state;
 		let index = this.findIndex(data);
 		tasks.splice(index, 1, data);
@@ -138,12 +129,6 @@ class App extends Component {
 		
 	}
 
-	// resetAll = (data) => {
-	// 	this.setState({
-	// 		...this.state,
-	// 		resetCheck: data
-	// 	})
-	// }
 	search = (data) => {
 		let {tasks} = this.state;
 		

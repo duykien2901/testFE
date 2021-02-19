@@ -28,9 +28,7 @@ export default class TaskItemDetail extends Component {
     };
 
     update = () => {
-        // let todo = JSON.parse(localStorage.getItem('todo'));
-        // todo.splice(props.index, 1, state);
-        // localStorage.setItem('todo', JSON.stringify(todo));
+      
         var date = `${new Date().getFullYear()}` + "-" + "0" + `${new Date().getMonth() + 1}` + "-" + `${new Date().getDate()}`;
         let data = {
             id: this.state.id,

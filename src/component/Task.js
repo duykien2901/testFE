@@ -11,46 +11,11 @@ class Task extends Component {
     };
   }
 
-  // check = (data, check) => {
-  //     // let tasks = JSON.stringify(localStorage.getItem('todo'));
-  //     // if(checked && removeItem.indexOf(index) < 0) {
-  //     //     removeItem.push(index);
-  //     // }
-  //     // if(!checked && removeItem.indexOf(index) >= 0) {
-  //     //     removeItem.splice(removeItem.indexOf(index), 1);
-  //     // }
-
-  //     // setState({...state, removeItem: removeItem});
-  //     // console.log(removeItem);
-  //     // if(removeItem.length == 0) {
-  //     //     setState({...state, reset: false});
-  //     // } else {
-  //     //     setState({...state, reset: true});
-  //     // }
-
-  //     this.props.check(data, check);
-
-  // }
-
   removeAll = () => {
-    // let todo = JSON.parse(localStorage.getItem('todo'));
-    // console.log(todo)
-    // console.log(removeItem);
-    // for(let i = 0; i < todo.length; i ++) {
-    //     if(removeItem.indexOf(i) < 0) {
-    //         todoCheck.push(todo[i]);
-    //     }
-    // }
 
-    // console.log(todoCheck);
     this.props.onRemoveAll();
-    // setState({removeItem: [], reset: false, removeAll: true});
-    // setState({...state, removeAll: false});
   };
   update = (data) => {
-    // let todo = JSON.parse(localStorage.getItem('todo'));
-    // todo.splice(props.index, 1, state);
-    // localStorage.setItem('todo', JSON.stringify(todo));
     this.props.update(data);
   };
 
@@ -93,7 +58,7 @@ class Task extends Component {
           update={this.props.update}
           onRemove={this.props.onRemove}
           resetCheck={this.props.resetCheck}
-          // resetAll = {this.props.resetAll}
+         
         />
       );
     });

@@ -4,11 +4,7 @@ import "./style/Task.css"
 import TaskItemDetail from './TaskItemDetail';
 
 export default class TaskDetail extends Component {
-    // const [detail, setDetail] = useState(0);
-    // const [remove, setRemove] = useState(false);
-  
-    // const [state, setState] = useState(props.info);
-    // console.log(props.info);
+   
     constructor(props) {
         super(props);
         this.state = {
@@ -42,14 +38,7 @@ export default class TaskDetail extends Component {
     onDetail = () => {
         this.setState({...this.state, detail: !this.state.detail});
     }
-    
-    // componentWillReceiveProps(nextProps) {
-    //     console.log(nextProps.resetCheck);
-    //     this.setState({
-    //         ...this.state,
-    //         checked: nextProps.resetCheck
-    //     })
-    // }
+  
 
     update = (data) => {
         this.props.update(data);

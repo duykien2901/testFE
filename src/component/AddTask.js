@@ -13,7 +13,6 @@ function AddTask(props) {
 	});
 
 	const [alert, setAlert] = useState(0);
-	// console.log(typeof `${new Date().getFullYear()}`+ "-" + `${new Date().getMonth()+1}` + "-" +`${new Date().getDate()}`);
 
 	var todo = [];
 	var reset = { id: "", title: "", description: "", dueDate: date, piority: "" };
@@ -32,20 +31,6 @@ function AddTask(props) {
 				setAlert(0);
 			}, 1000);
 		} else {
-			// let check = 0;
-			// for(let i = 0; i < todo.length; i++) {
-			// 	if(todo[i].dueDate > state.dueDate) {
-			// 		check = 1;
-			// 		todo.splice(i, 0, state);
-			// 	}
-			// }
-			// if(check === 0) {
-
-			// }
-			// todo.push(state);
-
-			// console.log(todo);
-			// localStorage.setItem("todo", JSON.stringify(todo));
 			setState(reset);
 			props.add(state);
 		}
