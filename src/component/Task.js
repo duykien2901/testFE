@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./style/Task.css";
 import TaskDetail from "./TaskDetail";
-import { useState, useEffect } from "react";
+
 
 class Task extends Component {
 	constructor(props) {
@@ -42,7 +42,7 @@ class Task extends Component {
 		}
 
 		for (let i = 0; i < data.length; i++) {
-			if (data[i].title.indexOf(this.state.title.toLowerCase()) >= 0) {
+			if (data[i].title.indexOf(this.state.title) >= 0) {
 				filter.push(data[i]);
 			}
 		}
@@ -64,16 +64,16 @@ class Task extends Component {
 		<div className="col-xl-5 col-lg-5 col-md-12 task">
 			<div className="title">Todo List</div>
 			<div className="form-group">
-			<input
-				type="text"
-				className="form-control"
-				placeholder="Search . . ."
-				style={{ margin: "10px 0" }}
-				name="title"
-				onChange={this.search}
-				value={this.state.search}
-			/>
-			<div className="content">{Element}</div>
+				<input
+					type="text"
+					className="form-control"
+					placeholder="Search . . ."
+					style={{ margin: "10px 0" }}
+					name="title"
+					onChange={this.search}
+					value={this.state.search}
+				/>
+				<div className="content">{Element}</div>
 			</div>
 
 			{!this.props.reset ? (

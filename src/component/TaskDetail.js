@@ -92,7 +92,7 @@ export default class TaskDetail extends Component {
                             <input type="checkbox" className="form-check-input" onChange={this.check} checked={this.state.checked} /> {info.title}
                         </label>
                     </div>
-                    <div className="button">
+                    <div className="button d-flex">
                         <button className="btn btn-info btn-css " onClick={this.onDetail}>
                             Detail
                         <i className="fas fa-info-circle" style={{ marginLeft: "2px" }}></i>

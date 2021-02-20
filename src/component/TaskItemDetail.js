@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import "./style/Task.css"
+import "./style/Task.css";
 export default class TaskItemDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            alert: 0
-        }
+        alert: 0,
+        };
     }
 
     componentWillReceiveProps(nextProps) {
@@ -17,7 +17,6 @@ export default class TaskItemDetail extends Component {
             description: nextProps.info.description,
             piority: nextProps.info.piority,
             detail: nextProps.info.detail,
-         
         });
         }
     }
@@ -28,48 +27,86 @@ export default class TaskItemDetail extends Component {
     };
 
     update = () => {
-      
-        var date = `${new Date().getFullYear()}` + "-" + "0" + `${new Date().getMonth() + 1}` + "-" + `${new Date().getDate()}`;
-        let data = {
-            id: this.state.id,
-            title: this.state.title,
-            dueDate: this.state.dueDate,
-            description: this.state.description,
-            piority: this.state.piority,
-        };
-        if (this.state.title === "") {
-            this.setState({...this.state, alert: 1})
-            setTimeout(() => {
-                this.setState({...this.state, alert: 0})
-            }, 1000);
-            
-        } else if (this.state.dueDate < date) {
-            this.setState({...this.state, alert: 2})
-            setTimeout(() => {
-                this.setState({...this.state, alert: 0})
-            }, 1000);
-        } else {
-            this.props.update(data);
-        }
+        let {
+            alert,
+            id,
+            title,
+            dueDate,
+            description,
+            piority,
+            detail,
+        } = this.state;
         
+       
+        var date =`${new Date().getFullYear()}` +"-" +`${new Date().getMonth() + 1 < 10 ? "0" : ""}` +`${new Date().getMonth() + 1}` +"-"+`${new Date().getDate() < 10 ? "0" : ""}` +`${new Date().getDate()}`;
+        let data = {
+            id,
+            title,
+            dueDate,
+            description,
+            piority,
+        };
+        if (title === "") {
+        this.setState({ ...this.state, alert: 1 });
+        setTimeout(() => {
+            this.setState({ ...this.state, alert: 0 });
+        }, 1000);
+        } else if (dueDate < date) {
+        this.setState({ ...this.state, alert: 2 });
+        setTimeout(() => {
+            this.setState({ ...this.state, alert: 0 });
+        }, 1000);
+        } else {
+        this.setState({ ...this.state, alert: 3 });
+        setTimeout(() => {
+            this.setState({ ...this.state, alert: 0 });
+        }, 1000);
+        this.props.update(data);
+        }
     };
 
     render() {
-       
-        return (!this.props.detail ? (
+        let {
+        alert,
+        id,
+        title,
+        dueDate,
+        description,
+        piority,
+        detail,
+        } = this.state;
+        return !this.props.detail ? (
         ""
         ) : (
-        
         <div className="taskItem">
-           	{this.state.alert === 0 ?"": <div className="alert2">{(this.state.alert === 1 ? "Chưa nhập title":"Nhập lại Due Date")}<i className="fas fa-exclamation-triangle" style = {{marginLeft: "7px"}}></i></div>}
+            {alert === 0 ? (
+            ""
+            ) : (
+            <div
+                className="alert2"
+                style={
+                alert === 3 ? { backgroundColor: "#a0e187", color: "white" } : {}
+                }
+            >
+                {alert === 1
+                ? "Chưa nhập title"
+                : alert === 2
+                ? "Nhập lại Due Date"
+                : "Update thành công"}
+                { alert === 3 ?  "" : <i
+                className="fas fa-exclamation-triangle"
+                style={{ marginLeft: "7px" }}
+                ></i> }
+            </div>
+            )}
             <div className="form-group">
             <input
                 type="text"
                 className="form-control"
                 placeholder="Add new task..."
                 name="title"
-                style = {{margin: "10px 0"}}
-                value={this.state.title}
+                style={{ margin: "10px 0" }}
+                value={title}
                 onChange={this.onChange}
             />
             <label htmlFor="des" className="lab">
@@ -80,7 +117,7 @@ export default class TaskItemDetail extends Component {
                 id="des"
                 rows="5"
                 className="textArea"
-                value={this.state.description}
+                value={description}
                 onChange={this.onChange}
             ></textarea>
 
@@ -92,7 +129,7 @@ export default class TaskItemDetail extends Component {
                     className="form-control"
                     id="date"
                     name="dueDate"
-                    value={this.state.dueDate}
+                    value={dueDate}
                     onChange={this.onChange}
                 />
                 </div>
@@ -102,7 +139,7 @@ export default class TaskItemDetail extends Component {
                     className="form-control piority-select"
                     id="piority"
                     name="piority"
-                    value={this.state.piority}
+                    value={piority}
                     onChange={this.onChange}
                 >
                     <option defaultValue value="Normal">
@@ -122,6 +159,6 @@ export default class TaskItemDetail extends Component {
             </button>
             </div>
         </div>
-        ));
+        );
     }
 }

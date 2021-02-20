@@ -3,7 +3,7 @@ import "./style/AddTask.css";
 import { useEffect, useState } from "react";
 
 function AddTask(props) {
-	var date = `${new Date().getFullYear()}` + "-" + "0" + `${new Date().getMonth() + 1}` + "-" + `${new Date().getDate()}`;
+	var date =`${new Date().getFullYear()}` +"-" +`${new Date().getMonth() + 1 < 10 ? "0" : ""}` +`${new Date().getMonth() + 1}` +"-"+`${new Date().getDate() < 10 ? "0" : ""}` +`${new Date().getDate()}`;
 	const [state, setState] = useState({
 		id: "",
 		title: "",
