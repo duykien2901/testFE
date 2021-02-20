@@ -4,7 +4,7 @@ import "./style/Task.css"
 import TaskItemDetail from './TaskItemDetail';
 
 export default class TaskDetail extends Component {
-   
+
     constructor(props) {
         super(props);
         this.state = {
@@ -12,41 +12,65 @@ export default class TaskDetail extends Component {
             checked: false,
         }
     }
-    
+
 
     componentDidMount() {
-        console.log("sss")
+        console.log("Component did mount")
         this.setState({
             ...this.state,
             checked: false
         })
-     
+
     }
 
     componentWillUnmount() {
+        console.log("Component un mount")
+        // this.setState({
+        //     ...this.state,
+        //     checked: false
+        // })
+
+    }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log(nextState);
+    //     console.log(nextProps);
+    //     return true;
+    // }
+
+    // componentWillUpdate(nextProps, nextState) {
+    //     // console.log(nextProps);
+
+    //     // this.setState({
+    //     //     ...this.state,
+    //     //     checked: false
+    //     // })
+
+    // }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.resetCheck === true) {
         this.setState({
-            ...this.state,
-            checked: false
-        })
-        
+            checked: false,
+        });
+        }
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        
+    componentDidUpdate() {
+        console.log("ss");
     }
-    
+
     onDetail = () => {
-        this.setState({...this.state, detail: !this.state.detail});
+        this.setState({ ...this.state, detail: !this.state.detail });
     }
-  
+
 
     update = (data) => {
         this.props.update(data);
     }
 
     onRemove = () => {
-       
-         this.props.onRemove(this.props.info);
+
+        this.props.onRemove(this.props.info);
     }
 
     check = (e) => {
@@ -54,31 +78,31 @@ export default class TaskDetail extends Component {
             ...this.state,
             checked: !this.state.checked
         });
-        console.log(this.state.checked)
         this.props.check(this.props.info, e.target.checked);
     }
 
-    render(){
-        let {info} = this.props;
-       
+    render() {
+        let { info } = this.props;
+        
         return (
-        <div>
-            <div className = "task-item">
-                <div className="form-check-inline">
-                    <label className="form-check-label">
-                        <input type="checkbox" className="form-check-input" onChange = {this.check} checked = {this.state.checked}/> {info.title}
-                    </label>
+            <div>
+                <div className="task-item">
+                    <div className="form-check-inline">
+                        <label className="form-check-label">
+                            <input type="checkbox" className="form-check-input" onChange={this.check} checked={this.state.checked} /> {info.title}
+                        </label>
+                    </div>
+                    <div className="button">
+                        <button className="btn btn-info btn-css " onClick={this.onDetail}>
+                            Detail
+                        <i className="fas fa-info-circle" style={{ marginLeft: "2px" }}></i>
+                        </button>
+                        <button className="btn btn-danger btn-css" onClick={this.onRemove}>Remove <i class="fas fa-trash"></i></button>
+                    </div>
                 </div>
-                <div className="button">
-                    <button className = "btn btn-info btn-css " onClick = {this.onDetail}>
-                        Detail
-                        <i className="fas fa-info-circle" style = {{marginLeft: "2px"}}></i>
-                    </button>
-                    <button className = "btn btn-danger btn-css" onClick = {this.onRemove}>Remove <i class="fas fa-trash"></i></button>
-                </div>
+                <TaskItemDetail info={this.props.info} detail={this.state.detail} update={this.props.update} />
+
             </div>
-            <TaskItemDetail info = {this.props.info} detail = {this.state.detail} update = {this.props.update}/>
-           
-        </div>
-    )}
+        )
+    }
 }

@@ -120,11 +120,18 @@ class App extends Component {
 			...this.state,
 			tasks: t,
 			reset: false,
-			resetCheck: false,
+			resetCheck: true,
 			removeIndex: []
 		})
 		localStorage.setItem('todo', JSON.stringify(t));
-	
+		setTimeout(() => {
+			this.setState({
+			...this.state,
+			
+			resetCheck: false,
+			
+		})
+		}, 100);
 		
 		
 	}

@@ -55,8 +55,7 @@ export default class TaskItemDetail extends Component {
     };
 
     render() {
-        // console.log(this.props.info);
-        console.log(this.state.alert);
+       
         return (!this.props.detail ? (
         ""
         ) : (
